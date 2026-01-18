@@ -16,8 +16,6 @@ app = Flask(__name__,
 game_search = GameSearch()
 steam_util = Steam(steam_api_key)
 
-app.config['DEBUG'] = os.getenv('FLASK_DEBUG', 'False') == 'True'
-
 # Routes
 @app.route('/')
 def home():
@@ -68,5 +66,4 @@ def export():
     )
 
 if __name__ == '__main__':
-    port = int(os.getenv('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=app.config['DEBUG'])
+    app.run()
