@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>{{ title }}</h1>
+    </header>
+
+    <main>
+        <input id="steamIdInput" placeholder="SteamID64 (optional) to see owned games">
+
+        <div class="layout">
+            <!-- LEFT: search + results -->
+            <div class="content">
+                <div class="search-container">
+                    <div class="search-box">
+                    <input
+                        type="text"
+                        class="search-input"
+                        id="searchInput"
+                        placeholder="Enter game title"
+                    >
+                    <button class="search-btn" id="searchBtn">Search</button>
+                    </div>
+
+                    <div id="status" class="status"></div>
+                    <div id="results"></div>
+                </div>
+            </div>
+
+            <!-- RIGHT: sidebar -->
+            <aside class="sidebar">
+                <h2>Selected Games</h2>
+                <div class="filter-row">
+                    <input
+                        type="text"
+                        class="search-input"
+                        id="listSearchInput"
+                        placeholder="Filter..."
+                    >
+                    <button id="exportBtn" type="button">Export</button>
+                </div>
+                <div id="selectedList"></div>
+            </aside>
+
+        </div>
+
+        <div id="intrigueModal" class="modal hidden">
+            <div class="modal-content">
+                <h3 id="modalTitle">Rate intrigue</h3>
+
+                <label>Intrigue (1–10)</label>
+                <div id="starRating" class="star-rating" role="radiogroup" aria-label="Intrigue rating">
+                <!-- Stars injected by JS -->
+                </div>
+                <div id="ratingValue" class="rating-value">Pick a rating</div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2026 Games Backlog Creator</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+</body>
+</html>
